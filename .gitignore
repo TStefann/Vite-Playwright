@@ -27,3 +27,5 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+e2e-tests/Screenshots
+e2e-tests/Reports
