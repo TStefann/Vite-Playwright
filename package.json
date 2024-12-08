@@ -8,16 +8,18 @@
     "build": "vite build",
     "preview": "vite preview",
     "unit-test": "vitest run src/components/*.test.jsx",
-    "test": "npx playwright test"
+    "e2e-test": "./node_modules/.bin/cucumber-js -p default"
 
-    
+
   },
   "dependencies": {
+    "cucumber-tsflow": "^4.4.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
     "@playwright/test": "^1.47.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -29,6 +31,8 @@
     "eslint": "^8.23.0",
     "eslint-plugin-react": "^7.31.1",
     "jsdom": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
     "vite": "^3.0.7",
     "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.22.1"
