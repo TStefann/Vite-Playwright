@@ -1,8 +1,6 @@
+import { Page } from "@playwright/test";
 
-
-import { Page } from '@playwright/test';
-
-export class BasePage {
+export class BasePageService {
   private page: Page | null = null;
 
   /**
@@ -11,10 +9,8 @@ export class BasePage {
    */
   getPage(): Page {
     if (!this.page) {
-      throw new Error('Page instance is not initialized.');
+      throw new Error("Page instance is not initialized");
     }
     return this.page;
   }
 }
-
-
