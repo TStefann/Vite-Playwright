@@ -20,6 +20,7 @@ jobs:
 
       - name: Run e2e tests
         run: npm run e2e-test
+
       # - name: Upload Artifacts
       #   if: always()
       #   uses: actions/upload-artifact@v4
