@@ -1,5 +1,5 @@
 import { binding, given, then } from "cucumber-tsflow";
-import { MyWorld } from "../support/World";
+import { MyWorld } from "../support/world";
 
 @binding()
 export class CacheMechanismSteps {
