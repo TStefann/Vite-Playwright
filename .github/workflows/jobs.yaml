@@ -51,4 +51,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
       - name: Expose Page URL
-        run: echo "https://${{github.repository}}.github.io/${{github.sha}}"
+        run: echo "https://tstefann.github.io/${{github.repository}}"
