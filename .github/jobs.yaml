@@ -1,0 +1,28 @@
+name: Build, Lint, Test and Deploy
+
+on: [push, workflow_dispatch]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run unit tests
+        run: npm run unit-test
+
+      - name: Run e2e tests
+        run: npm run e2e-test
+      # - name: Upload Artifacts
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: Reporter
+      #     path: cypress/reports/
