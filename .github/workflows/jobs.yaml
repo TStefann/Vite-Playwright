@@ -23,6 +23,8 @@ jobs:
       #   run: |
       #     sleep 10 # Wait for the server to start
       #     curl --retry 10 --retry-connrefused http://localhost:5173/
+      - name: Lint code
+        run: npm run lint
       - name: Run unit tests
         run: npm run unit-test
       - name: Run e2e tests
@@ -31,5 +33,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Reporter
+          name: Report
           path: e2e-tests/Reports
