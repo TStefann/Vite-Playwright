@@ -17,7 +17,6 @@ jobs:
         run: npm ci
       - name: Run unit tests
         run: npm run unit-test
-
       - name: Run e2e tests
         run: npm run e2e-test
       # - name: Upload Artifacts
