@@ -82,7 +82,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ needs.setup.outputs.cache-key }}
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            deps-node-modules-
 
       - name: Build Project
         run: npm run build
