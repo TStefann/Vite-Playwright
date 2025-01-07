@@ -45,6 +45,9 @@ jobs:
         run: |
           echo "Root directory contents:"
           ls -la
+           echo "Contents of subdirectories:"
+          find . -type d -exec echo "In directory: {}" \; -exec ls -la {} \;
+
       - name: Run unit tests
         run: npm run unit-test
         working-directory: ..
