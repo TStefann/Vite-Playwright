@@ -34,7 +34,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Report
+          name: Unit Tests Report
           path: unit-test-report.json
       - name: Run e2e tests
         run: npm run e2e-test
@@ -42,7 +42,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Report
+          name: E2E Tests Report
           path: e2e-tests/Reports
       - name: Build
         run: npm run build
