@@ -42,7 +42,9 @@ jobs:
     needs: setup
     steps:
       - name: Echo ls
-        run: ls
+        run: |
+          echo "Root directory contents:"
+          ls -la
       - name: Run unit tests
         run: npm run unit-test
         working-directory: ..
