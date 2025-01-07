@@ -22,7 +22,7 @@ jobs:
             deps-node-modules-
 
       - name: Install dependencies
-        run: npm --prefix ./playwright ci
+        run: npm --prefix ./playwright install
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
