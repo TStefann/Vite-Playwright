@@ -33,7 +33,7 @@ The pipeline automates all critical stages of static website development, includ
 
 5. **Deployment to GitHub Pages**:
    - Automatically deploys the built static site to GitHub Pages.
-   - Live website available at: **[https://tstefann.github.io/playwright/](https://tstefann.github.io/playwright/)**.
+   - Live website available at: **[https://tstefann.github.io/Vite-Playwright//](https://tstefann.github.io/Vite-Playwright//)**.
 
 ---
 
@@ -110,4 +110,4 @@ The pipeline uploads test reports as artifacts for transparency and debugging:
 
 ## Live Website
 
-👉 https://tstefann.github.io/playwright/
+👉 https://tstefann.github.io/Vite-Playwright/
