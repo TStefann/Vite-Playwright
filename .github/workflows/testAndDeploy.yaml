@@ -1,13 +1,12 @@
 name: Build, Lint, Test and Deploy
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     types:
       - closed
       - synchronize
+    branches:
+      - main
 
 jobs:
   test_and_deploy:
