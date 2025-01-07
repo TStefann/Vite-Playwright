@@ -31,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - name: Echo ls
+        run: ls
       - name: Lint code
         run: npm run lint
         working-directory: ../
@@ -39,6 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      - name: Echo ls
+        run: ls
       - name: Run unit tests
         run: npm run unit-test
         working-directory: ..
