@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Cache dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Lint code
         run: npm run lint
-        working-directory: ../
+        working-directory: ./package.json
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Run unit tests
         run: npm run unit-test
-        working-directory: ../
+        working-directory: .
 
       - name: Upload Unit Test Reports
         if: always()
