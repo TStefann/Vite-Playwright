@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Lint code
         run: npm run lint
-        working-directory: ../playwright
+        working-directory: ../
 
   unit-tests:
     runs-on: ubuntu-latest
