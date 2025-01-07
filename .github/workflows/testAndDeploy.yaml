@@ -1,6 +1,14 @@
 name: Build, Lint, Test and Deploy
 
-on: [push, workflow_dispatch]
+# on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - closed
+      - synchronize
 
 jobs:
   test_and_deploy:
