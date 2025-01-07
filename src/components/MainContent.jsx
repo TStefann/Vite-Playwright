@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import HelpArea from './HelpArea';
+import HelpArea from "./HelpArea";
 
 function MainContent() {
   const [helpVisible, setHelpVisible] = useState(false);
@@ -11,7 +11,9 @@ function MainContent() {
 
   return (
     <main>
-      <button onClick={toggleHelp}>{helpVisible ? 'Hide' : 'Show'} Hints</button>
+      <button onClick={toggleHelp}>
+        {helpVisible ? "Hide" : "Show"} Hintsss
+      </button>
       {helpVisible && <HelpArea />}
     </main>
   );
