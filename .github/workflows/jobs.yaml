@@ -32,7 +32,7 @@ jobs:
     needs: setup
     steps:
       - name: Lint code
-        run: npm run lint
+        run: cd /home/runner/work/playwright/playwright && npm run lint
 
   unit-tests:
     runs-on: ubuntu-latest
