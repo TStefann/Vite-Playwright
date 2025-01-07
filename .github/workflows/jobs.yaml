@@ -9,20 +9,9 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    outputs:
-      cache-key: ${{ steps.cache-output.outputs.cache-key }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Cache Node.js Dependencies
-        id: cache-output
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            deps-node-modules-
 
       - name: Install Dependencies
         run: npm ci
@@ -37,16 +26,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Restore Node.js Dependencies Cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ needs.setup.outputs.cache-key }}
-
       - name: Start Development Server
-        run: |
-          npm run dev &
-          npx wait-on http://localhost:5173
+        run: npm run dev & sleep 10 && curl http://localhost:5173/
 
       - name: Lint Code
         run: npm run lint
@@ -78,12 +59,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Restore Node.js Dependencies Cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ needs.setup.outputs.cache-key }}
-
       - name: Build Project
         run: npm run build
 
@@ -100,7 +75,7 @@ jobs:
         uses: actions/deploy-pages@v3
 
       - name: Expose Deployed Page URL
-        run: echo https://tstefann.github.io/playwright/"
+        run: echo "Page URL https://tstefann.github.io/playwright/"
 # name: Build, Lint, Test and Deploy
 
 # on: [push, workflow_dispatch]
