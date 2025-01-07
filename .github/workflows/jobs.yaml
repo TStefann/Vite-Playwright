@@ -1,137 +1,56 @@
-name: Build, Lint, Test, and Deploy
+name: Build, Lint, Test and Deploy
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Install Dependencies
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
         run: npm ci
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
       - name: Start Development Server
         run: npm run dev & sleep 10 && curl http://localhost:5173/
-
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      # - name: Start Development Server
-      #   run: npm run dev & sleep 10 && curl http://localhost:5173/
-
-      - name: Lint Code
+      - name: Lint code
         run: npm run lint
-
-      - name: Run Unit Tests
+      - name: Run unit tests
         run: npm run unit-test
-
-      - name: Upload Unit Test Artifacts
+      - name: Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Unit Tests Report
           path: unit-test-report.json
-
-      - name: Run E2E Tests
+      - name: Run e2e tests
         run: npm run e2e-test
-
-      - name: Upload E2E Test Artifacts
+      - name: Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: E2E Tests Report
           path: e2e-tests/Reports
-
-  build-and-deploy:
-    needs: [setup, test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Build Project
+      - name: Build
         run: npm run build
-
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
-      - name: Upload Artifact for Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
-
+          # Upload dist repository
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
-
-      - name: Expose Deployed Page URL
-        run: echo "Page URL https://tstefann.github.io/playwright/"
-# name: Build, Lint, Test and Deploy
-
-# on: [push, workflow_dispatch]
-
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       id-token: write
-#       pages: write
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-#       - name: Cache dependencies
-#         uses: actions/cache@v4
-#         with:
-#           path: ~/.npm
-#           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-#       - name: Install dependencies
-#         run: npm ci
-#       - name: Install Playwright Browsers
-#         run: npx playwright install --with-deps
-#       - name: Start Development Server
-#         run: npm run dev & sleep 10 && curl http://localhost:5173/
-#       - name: Lint code
-#         run: npm run lint
-#       - name: Run unit tests
-#         run: npm run unit-test
-#       - name: Upload Artifacts
-#         if: always()
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: Unit Tests Report
-#           path: unit-test-report.json
-#       - name: Run e2e tests
-#         run: npm run e2e-test
-#       - name: Upload Artifacts
-#         if: always()
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: E2E Tests Report
-#           path: e2e-tests/Reports
-#       - name: Build
-#         run: npm run build
-#       - name: Setup Pages
-#         uses: actions/configure-pages@v3
-#       - name: Upload artifact
-#         uses: actions/upload-pages-artifact@v1
-#         with:
-#           # Upload dist repository
-#           path: "./dist"
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@v3
-#       - name: Expose Page URL
-#         run: echo "https://tstefann.github.io/playwright/"
+      - name: Expose Page URL
+        run: echo "https://tstefann.github.io/playwright/"
