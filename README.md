@@ -33,7 +33,7 @@ The pipeline automates all critical stages of static website development, includ
 
 5. **Deployment to GitHub Pages**:
    - Automatically deploys the built static site to GitHub Pages.
-   - Live website available at: **[https://tstefann.github.io/Vite-Playwright//](https://tstefann.github.io/Vite-Playwright//)**.
+   - Live website available at: **[https://tstefann.github.io/Vite-Playwright/](https://tstefann.github.io/Vite-Playwright/)**.
 
 ---
 
@@ -94,7 +94,6 @@ The pipeline uploads test reports as artifacts for transparency and debugging:
 
 2. **E2E Test Report**:
    - Directory: `e2e-tests/Reports`.
-   - Includes comprehensive logs and results of end-to-end tests.
 
 ---
 
