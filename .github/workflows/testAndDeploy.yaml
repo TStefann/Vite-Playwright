@@ -3,7 +3,7 @@ name: Build, Lint, Test and Deploy
 on: [push, workflow_dispatch]
 
 jobs:
-  test:
+  test_and_deploy:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
