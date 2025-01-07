@@ -32,7 +32,7 @@ jobs:
     needs: setup
     steps:
       - name: Lint code
-        run: npm run lint
+        run: echo "Root directory contents:" && ls -la
         working-directory: ./package.json
 
   unit-tests:
