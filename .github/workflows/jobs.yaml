@@ -32,8 +32,8 @@ jobs:
     needs: setup
     steps:
       - name: Lint code
-        run: echo "Root directory contents:" && ls -la
-        working-directory: ./package.json
+        run: npm run lint
+        working-directory: playwright/package.json
 
   unit-tests:
     runs-on: ubuntu-latest
