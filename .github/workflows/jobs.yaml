@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Lint code
         run: npm run lint
-        working-directory: ../..
+        working-directory: ../playwright
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Run unit tests
         run: npm run unit-test
-        working-directory: .
+        working-directory: ..
 
       - name: Upload Unit Test Reports
         if: always()
