@@ -19,6 +19,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Start Development Server
+        run: npm run dev & sleep 10 && curl http://localhost:5173/
+
   test:
     needs: setup
     runs-on: ubuntu-latest
@@ -26,8 +29,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Start Development Server
-        run: npm run dev & sleep 10 && curl http://localhost:5173/
+      # - name: Start Development Server
+      #   run: npm run dev & sleep 10 && curl http://localhost:5173/
 
       - name: Lint Code
         run: npm run lint
