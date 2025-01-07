@@ -1,6 +1,5 @@
 name: Build, Lint, Test and Deploy
 
-# on: [push, workflow_dispatch]
 on:
   push:
     branches:
