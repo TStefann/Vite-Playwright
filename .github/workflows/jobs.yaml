@@ -82,9 +82,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            deps-node-modules-
+          key: ${{ needs.setup.outputs.cache-key }}
 
       - name: Build Project
         run: npm run build
@@ -102,7 +100,7 @@ jobs:
         uses: actions/deploy-pages@v3
 
       - name: Expose Deployed Page URL
-        run: echo "https://tstefann.github.io/playwright/"
+        run: echo https://tstefann.github.io/playwright/"
 # name: Build, Lint, Test and Deploy
 
 # on: [push, workflow_dispatch]
