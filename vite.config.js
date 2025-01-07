@@ -4,20 +4,13 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/playwright",
+  base: "/playwright/",
   test: {
     globals: true,
     environment: "jsdom",
     setupFiles: "./src/test/setup.js",
     css: true,
-    // reporters: ["json"],
-    outputFile: "test.json",
+    reporters: ["json"],
+    outputFile: "unit-test-report.json",
   },
 });
-
-// docker build -t my-vite-project .
-// docker run --rm -v ./test.json:/app/test.json my-vite-project
-
-// npx playwright test --ui
-
-//

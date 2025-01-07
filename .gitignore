@@ -29,3 +29,4 @@ node_modules/
 /playwright/.cache/
 e2e-tests/Screenshots
 e2e-tests/Reports
+unit-test-report.json

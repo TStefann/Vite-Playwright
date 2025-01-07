@@ -30,6 +30,12 @@ jobs:
         run: npm run lint
       - name: Run unit tests
         run: npm run unit-test
+      - name: Upload Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Report
+          path: unit-test-report.json
       - name: Run e2e tests
         run: npm run e2e-test
       - name: Upload Artifacts
