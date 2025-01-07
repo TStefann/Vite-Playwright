@@ -15,7 +15,7 @@ let context: BrowserContext;
 setDefaultTimeout(5000);
 
 BeforeAll(async () => {
-  console.log("Launching browser...");
+  console.log("Launching browser..");
   browser = await chromium.launch({
     headless: true,
   });
